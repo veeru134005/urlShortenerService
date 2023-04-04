@@ -1,0 +1,91 @@
+* {  
+    box-sizing: border-box;  
+}  
+body {  
+        font-family: Arial, sans-serif;  
+        height: 100%;  
+}  
+  
+h1 {  
+    text-align:center;  
+    -webkit-text-stroke: 1px black;  
+    color:red;  
+}  
+  
+.background-img { 
+	  background-image: url("/w3images/photographer.jpg");
+  background-color: #cccccc;
+  height: 600px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative; 
+     
+    background-image: url(  
+"https://4kwallpapers.com/images/walls/thumbs_3t/6482.jpg");  
+}  
+.container {  
+    max-width: 300px;  
+    padding: 17px;  
+    position: absolute;  
+    left: 28px;  
+    top: 50px;  
+    margin: 20px;  
+}  
+  
+b {  
+    -webkit-text-stroke: 1px black;  
+    color: red;  
+    font-size:26px;  
+}  
+input[type=text],  
+input[type=password] {  
+    margin: 17px 0px;  
+    border: 2px solid red;  
+    width: 100%;  
+    padding: 17px;  
+}  
+.button:hover {  
+    transform: scale(1.2);  
+    transition: transform 0.2s;  
+}  
+  
+.button {  
+    border: none;  
+    cursor: pointer;  
+    width: 100%;  
+    background-color: #F58840;  
+    color: #EAF6F6;  
+    padding: 17px 17px;  
+}  
+
+
+
+.login__input {
+	border: none;
+	border-bottom: 2px solid #D1D1D4;
+	background: none;
+	padding: 10px;
+	padding-left: 24px;
+	font-weight: 700;
+	width: 75%;
+	transition: .2s;
+}
+
+.login__submit {
+	background: #fff;
+	font-size: 14px;
+	margin-top: 30px;
+	padding: 16px 20px;
+	border-radius: 26px;
+	border: 1px solid #D4D3E8;
+	text-transform: uppercase;
+	font-weight: 700;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	color: #4C489D;
+	box-shadow: 0px 2px 2px #5C5696;
+	cursor: pointer;
+	transition: .2s;
+}
