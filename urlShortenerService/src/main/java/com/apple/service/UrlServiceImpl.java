@@ -5,9 +5,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.apple.Repo.UrlRepository;
 import com.apple.binding.UrlDto;
 import com.apple.entity.UrlEntity;
+import com.apple.repo.UrlRepository;
 import com.apple.utils.UrlUtils;
 
 @Service

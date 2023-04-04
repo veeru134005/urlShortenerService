@@ -11,9 +11,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.apple.Repo.UrlRepository;
 import com.apple.binding.UrlDto;
 import com.apple.entity.UrlEntity;
+import com.apple.repo.UrlRepository;
 import com.apple.utils.UrlUtils;
 
 @ExtendWith(MockitoExtension.class)
