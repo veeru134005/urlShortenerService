@@ -1,4 +1,8 @@
 
 How to use
 
-git clone https://github.com/AnteMarin/UrlShortener-API.git
+git clone https://github.com/veeru134005/urlShortenerService.git
+cd urlShortenerService
+mvn spring-boot:run
+
+http://localhost:9000
