@@ -22,7 +22,7 @@
 		<div class="background-img">
 			<h1 style='color:rgb(0, 255, 255)'>Welcome to Apple Url Shortener Service</h1>
 
-			<form class="container" style="margin-left: 804px" onsubmit="return false">
+			<form class="container" style="margin-left: 804px">
 				<br>
 				<br>
 				<b style='color:rgb(0, 255, 255)'>Please Enter Url</b>
@@ -37,19 +37,28 @@
 					<i class="button__icon fas fa-chevron-right"></i>
 				</button>
 			</form>
-			<div id="output-box"></div>
 
 			<script>
 
-				document.getElementById("submitShrtUrl").addEventListener("click", generateShrUrl, false);
+				if (document.getElementById("fullUrl").value == '') {
 
+					document.getElementById("shrtUrl").style.display = 'none';
+				}
+
+				document.getElementById("submitShrtUrl").addEventListener("click", generateShrUrl, false);
 				async function generateShrUrl(event) {
 
+					const fullUrl = document.getElementById("fullUrl").value;
+					if (fullUrl == '' || fullUrl == null) {
+						alert("Please Enter Url");
+						return;
+					}
+					if (!isValidHttpUrl(fullUrl)) {
+						alert("Please Enter Valide Url");
+						return;
+					}
+
 					const url = window.location.href + "generate";
-
-
-					var data = {url: document.getElementById("fullUrl").value}
-
 					await fetch(url, {
 						method: "POST",
 						mode: "cors",
@@ -59,23 +68,25 @@
 							"Content-Type": "application/json"
 
 						},
-
-
-						body: JSON.stringify(data),
+						body: JSON.stringify({url: fullUrl}),
 					}).then(re => {
+						document.getElementById("shrtUrl").style.display = '';
 						return re.json();
-
 					}).then(shrtUrl => {
+
 						document.getElementById("shrtUrl").value = shrtUrl.response;
 
 					});
-					console.log(document.getElementById("shrtUrl").value);
-
-
-					//console.log(data));
-					//console.log(response);
 					return false;
+				}
 
+				function isValidHttpUrl(string) {
+					try {
+						const newUrl = new URL(string);
+						return newUrl.protocol === 'http:' || newUrl.protocol === 'https:';
+					} catch (err) {
+						return false;
+					}
 				}
 
 			</script>

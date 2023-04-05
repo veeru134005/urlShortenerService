@@ -1,0 +1,24 @@
+package com.apple.service;
+
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.apple.Repo.UrlRepository;
+import com.apple.utils.UrlUtils;
+
+@ExtendWith(MockitoExtension.class)
+public class TestUrlServiceImpl {
+	
+	@Mock
+	private UrlRepository repository;
+
+	@Mock
+	private UrlUtils urlUtils;
+	
+	@InjectMocks
+	private UrlServiceImpl serviceImpl;
+
+}

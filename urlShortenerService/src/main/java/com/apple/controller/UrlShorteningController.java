@@ -31,7 +31,7 @@ public class UrlShorteningController {
 	@PostMapping(value = "/generate", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> generateShortUrl(@RequestBody UrlDto urlDto) {
 		if (urlDto == null || urlDto.getUrl().isEmpty())
-			return new ResponseEntity<String>("Please Enter Url", HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<Map<String, String>>(Collections.singletonMap("response", "Please Enter Url"), HttpStatus.BAD_REQUEST);
 
 		String uriString = ServletUriComponentsBuilder.fromCurrentContextPath().toUriString();
 		String shrUrl = uriString.concat("/api/").concat(urlService.generateShortUrl(urlDto));

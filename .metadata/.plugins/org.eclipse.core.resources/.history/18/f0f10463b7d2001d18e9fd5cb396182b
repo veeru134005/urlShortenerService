@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Web form</title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div class="background-img">
+			<h1 style='color:rgb(0, 255, 255)'>Welcome to Apple Url Shortener Service</h1>
+
+			<form class="container" style="margin-left: 804px" onsubmit="return false">
+				<br>
+				<br>
+				<b style='color:rgb(0, 255, 255)'>Enter Url</b>
+				<input style="border: 2px solid #00ffe7;" type="text" placeholder="Enter Url" name="Url" id="fullUrl"
+					required>
+
+				<!--  <b>Shortern Url</b>  
+            <input style="border: 2px solid #00ffe7" type="text" placeholder="Enter your Password"  
+                    name="password" required>  -->
+
+				<button class="button login__submit" id="submitShrtUrl" type="button">
+					<span class=" button__text">Generate Shortener Url</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>
+			</form>
+			<div id="output-box"></div>
+
+			<script>
+
+				document.getElementById("submitShrtUrl").addEventListener("click", checkboxClick, false);
+
+				async function checkboxClick(event) {
+
+					const loc = window.location.href + "generate";
+
+
+					var data = {url: document.getElementById("fullUrl").value}
+					console.log(data);
+					await fetch(loc, {
+						method: "POST", // *GET, POST, PUT, DELETE, etc.
+						mode: "cors", // no-cors, *cors, same-origin
+						cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+						credentials: "same-origin", // include, *same-origin, omit
+						headers: {
+							"Content-Type": "application/json"
+
+						},
+
+
+						body: JSON.stringify(data), // body data type must match "Content-Type" header
+					}).then(re => {
+						return re.json();
+
+					}).then(shrtUrl=>{
+						console.log(shrtUrl);
+					});
+
+
+					//console.log(data));
+					//console.log(response);
+					return false;
+
+				}
+
+			</script>
+		</div>
+	</body>
+
+	</html>
+
+
+</body>
+
+</html>

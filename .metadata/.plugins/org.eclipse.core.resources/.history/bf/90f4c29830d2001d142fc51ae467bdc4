@@ -1,0 +1,5 @@
+package com.apple.entity;
+
+public class Url {
+
+}

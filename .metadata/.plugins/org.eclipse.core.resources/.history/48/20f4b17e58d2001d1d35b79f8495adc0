@@ -1,0 +1,58 @@
+package com.apple.service;
+
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
+
+import java.util.Optional;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+
+import com.apple.Repo.UrlRepository;
+import com.apple.binding.UrlDto;
+import com.apple.entity.UrlEntity;
+import com.apple.utils.UrlUtils;
+
+@ExtendWith(MockitoExtension.class)
+public class TestUrlServiceImpl {
+
+	@Mock
+	private UrlRepository repository;
+
+	@Mock
+	private UrlUtils urlUtils;
+
+	@InjectMocks
+	private UrlServiceImpl serviceImpl;
+
+	@Test
+	public void TestGenerateShortUrlNotExits() {
+		UrlDto dto = new UrlDto("https://www.google.com");
+
+		UrlEntity urlEntity = new UrlEntity("https://www.google.com", "https://localhost:9000/1");
+
+		when(urlUtils.generateShortUrl(urlEntity.getOriginalUrl())).thenReturn("25452");
+
+		String actual = serviceImpl.generateShortUrl(dto);
+
+		assertEquals("25452", actual);
+
+	}
+
+	@Test
+	public void TestGenerateShortUrlExits() {
+		UrlDto dto = new UrlDto("https://www.google.com");
+
+		UrlEntity urlEntity = new UrlEntity("https://www.google.com", "https://localhost:9000/1");
+		when(repository.findByOriginalUrl(dto.getUrl())).thenReturn(Optional.of(urlEntity));
+
+		String actual = serviceImpl.generateShortUrl(dto);
+
+		assertEquals("https://localhost:9000/1", actual);
+	}
+
+}

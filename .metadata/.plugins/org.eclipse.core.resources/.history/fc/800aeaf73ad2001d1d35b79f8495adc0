@@ -1,0 +1,18 @@
+package com.apple.service;
+
+import org.springframework.stereotype.Service;
+
+import com.apple.binding.UrlDto;
+import com.apple.entity.UrlEntity;
+
+@Service
+public class UrlServiceImpl implements UrlService{
+
+	@Override
+	public UrlEntity generateShortLink(UrlDto urlDto) {
+
+		
+		return null;
+	}
+
+}

@@ -1,0 +1,28 @@
+package com.apple.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.apple.Repo.UrlRepository;
+import com.apple.binding.UrlDto;
+import com.apple.utils.UrlUtils;
+
+@Service
+public class UrlServiceImpl implements UrlService {
+
+	@Autowired
+	private UrlRepository repository;
+
+	@Autowired
+	private UrlUtils urlUtils;
+
+	@Override
+	public String generateShortUrl(UrlDto urlDto) {
+		
+		String shrtUrl = urlUtils.generateShortUrl(urlDto.getOriginalUrl());
+		
+		repository.save(null)
+		return shrtUrl;
+	}
+
+}

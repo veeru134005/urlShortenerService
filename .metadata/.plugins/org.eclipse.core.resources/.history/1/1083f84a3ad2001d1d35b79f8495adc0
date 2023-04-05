@@ -1,0 +1,5 @@
+package com.apple.utils;
+
+public class UrlUtility {
+
+}

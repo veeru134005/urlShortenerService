@@ -1,0 +1,15 @@
+package com.apple.service;
+
+import com.apple.binding.UrlDto;
+import com.apple.entity.UrlEntity;
+
+public interface UrlService {
+
+	public UrlEntity generateShortLink(UrlDto urlDto);
+	
+//    public Url persistShortLink(Url url);
+//    
+//    public Url getEncodedUrl(String url);
+//    
+//    public  void  deleteShortLink(Url url);
+}

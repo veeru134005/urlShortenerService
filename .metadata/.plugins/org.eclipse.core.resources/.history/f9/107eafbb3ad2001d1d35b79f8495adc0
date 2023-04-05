@@ -1,0 +1,19 @@
+package com.apple.utils;
+
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+
+import com.google.common.hash.Hashing;
+
+public class UrlUtility {
+
+	public static String  shrtUrl(String url)
+    {
+        String encodeShrtUrl = "";
+        LocalDateTime time = LocalDateTime.now();
+        encodeShrtUrl = Hashing.murmur3_32()
+                .hashString(url.concat(time.toString()), StandardCharsets.UTF_8)
+                .toString();
+        return  encodeShrtUrl;
+    }
+}

@@ -1,0 +1,27 @@
+package com.apple.contoller;
+
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.apple.controller.UrlShorteningController;
+import com.apple.service.UrlService;
+import com.apple.service.UrlServiceImpl;
+
+@RunWith(MockitoJUnitRunner.class)
+public class TestUrlShorteningController {
+
+	private MockMvc mvc;
+
+	@Mock
+	private UrlService urlService;
+
+	@InjectMocks
+	private UrlShorteningController shorteningController;
+	
+	
+	
+
+}

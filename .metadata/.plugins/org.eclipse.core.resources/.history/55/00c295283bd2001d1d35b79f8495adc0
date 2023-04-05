@@ -1,0 +1,22 @@
+package com.apple.utils;
+
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+
+import org.springframework.stereotype.Component;
+
+import com.google.common.hash.Hashing;
+
+@Component
+public class UrlUtils {
+
+	public String  shrtUrl(String url)
+    {
+        String encodeShrtUrl = "";
+        LocalDateTime time = LocalDateTime.now();
+        encodeShrtUrl = Hashing.murmur3_32()
+                .hashString(url.concat(time.toString()), StandardCharsets.UTF_8)
+                .toString();
+        return  encodeShrtUrl;
+    }
+}

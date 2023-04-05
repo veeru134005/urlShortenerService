@@ -1,0 +1,10 @@
+package com.apple.service;
+
+import com.apple.binding.UrlDto;
+
+public interface UrlService {
+
+	public String generateShortUrl(UrlDto urlDto);
+
+	public String getOriginalUrl(String shrtUrl);
+}

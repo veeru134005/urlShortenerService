@@ -1,0 +1,36 @@
+package com.apple.binding;
+
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+public class UrlDto implements Serializable {
+	@JsonProperty("url")
+	private String url;
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public UrlDto(String url) {
+		super();
+		this.url = url;
+	}
+
+	public UrlDto() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "UrlDto [url=" + url + "]";
+	}
+
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Apple Shortener Url </title>
+	<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+	<!DOCTYPE html>
+	<html>
+
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+
+	<body>
+		<div class="background-img">
+			<h1 style='color:rgb(0, 255, 255)'>Welcome to Apple Url Shortener Service</h1>
+
+			<form class="container" style="margin-left: 804px">
+				<br>
+				<br>
+				<b style='color:rgb(0, 255, 255)'>Please Enter Url</b>
+				<input style="border: 2px solid #00ffe7;" type="text" placeholder="Enter Url" name="Url" id="fullUrl"
+					required>
+
+				<input style="border: 2px solid #00ffe7;" type="text" placeholder="Shortener Url" name="Url"
+					id="shrtUrl" readonly>
+
+				<button class="button login__submit" id="submitShrtUrl" type="button">
+					<span class=" button__text">Generate Shortener Url</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>
+			</form>
+
+			<script>
+			
+			     if(document.getElementById("fullUrl").value==''){
+					 console.log("insie full")
+					 document.getElementById("shrtUrl").style.display = 'none';
+				 }
+			
+				document.getElementById("submitShrtUrl").addEventListener("click", generateShrUrl, false);
+				async function generateShrUrl(event) {
+
+					const fullUrl = document.getElementById("fullUrl").value;
+					if (fullUrl == '' || fullUrl == null) {
+						alert("Please Enter Url");
+						return;
+					}
+					const url = window.location.href + "generate";
+					await fetch(url, {
+						method: "POST",
+						mode: "cors",
+						cache: "no-cache",
+						credentials: "same-origin",
+						headers: {
+							"Content-Type": "application/json"
+
+						},
+						body: JSON.stringify({url: fullUrl}),
+					}).then(re => {
+						document.getElementById("shrtUrl").style.display = '';
+						return re.json();
+					}).then(shrtUrl => {
+						
+						document.getElementById("shrtUrl").value = shrtUrl.response;
+
+					});
+					return false;
+				}
+
+			</script>
+		</div>
+	</body>
+
+	</html>
+
+
+</body>
+
+</html>

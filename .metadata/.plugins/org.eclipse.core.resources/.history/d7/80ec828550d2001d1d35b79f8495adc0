@@ -1,0 +1,43 @@
+package com.apple.contoller;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+
+import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockHttpServletResponse;
+import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.web.servlet.MockMvc;
+
+import com.apple.controller.UrlShorteningController;
+import com.apple.service.UrlService;
+
+@RunWith(SpringRunner.class)
+@WebMvcTest(UrlShorteningController.class)
+public class TestUrlShorteningController {
+
+	@Autowired
+	private MockMvc mvc;
+
+	@Mock
+	private UrlService urlService;
+
+	@InjectMocks
+	private UrlShorteningController shorteningController;
+
+	@Test
+	public void TestGenerateShortUrl() throws Exception {
+		
+		
+		System.err.println(mvc);
+		MockHttpServletResponse response = mvc.perform(post("http://localhost:8080/generate").contentType(MediaType.APPLICATION_JSON).content("{url: null}")).andReturn()
+				.getResponse();
+		System.err.println("response"+response);
+
+	}
+
+}
